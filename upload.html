@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF</title>
+</head>
+<body>
+    <input type="file" id="pdfInput" accept="application/pdf">
+    <button onclick="uploadPDF()">Send</button>
+
+    <script>
+        function uploadPDF() {
+            const fileInput = document.getElementById("pdfInput");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select a file!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("pdf", file);
+
+            // fetch("http://10.33.0.21:5000/upload", { // Replace with your backend IP
+            fetch("https://presentationbackend.onrender.com/upload", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
