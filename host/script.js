@@ -36,17 +36,21 @@ function getQueryParams() {
 }
 
 window.onload = () => {
-    const params = getQueryParams();
-    if (params.room) {
-        const playerName = params.name;
-        roomInput.value = params.room;
-        nameInput.value = playerName;
 
-        // Delay the join event to ensure the socket connection is established
-        setTimeout(() => {
-            joinBtn.click(); // Simulate click to join the room
-        }, 100); // Adjust the delay as needed (100ms is a good starting point)
-    }   
+    setTimeout(() => {
+        joinLive('tcs','tcshost')
+    }, 100);
+    // const params = getQueryParams();
+    // if (params.room) {
+    //     const playerName = params.name;
+    //     roomInput.value = params.room;
+    //     nameInput.value = playerName;
+
+    //     // Delay the join event to ensure the socket connection is established
+    //     setTimeout(() => {
+    //         joinBtn.click(); // Simulate click to join the room
+    //     }, 100); // Adjust the delay as needed (100ms is a good starting point)
+    // }   
 };
 
 
