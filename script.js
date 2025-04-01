@@ -15,6 +15,8 @@ const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const thumbnailList = document.getElementById('thumbnail-list');
 
+const liveBtn = document.getElementById('joinLiveBtn');
+
 
 let pdfDoc = null;
 let currentPage = 1;
@@ -35,13 +37,24 @@ function getQueryParams() {
     return params;
 }
 
+liveBtn.addEventListener('click', () => {
+    const name = 'tcshost';
+    const roomName = 'tcs';
+    if (name && roomName) {
+        myName = name;
+        myRoom = roomName;
+        socket.emit('joinRoom', roomName, name);
+        nameInput.style.display = 'none';
+        roomInput.style.display = 'none';
+        joinBtn.style.display = 'none';
+    }
+});
+
 window.onload = () => {
 
          setTimeout(() => {
-             roomInput.value = 'tcs';
-             nameInput.value = 'tcshost';
-            joinBtn.click(); // Simulate click to join the room
-        }, 100);
+         liveBtn.click();
+        }, 2000);
     // const params = getQueryParams();
     // if (params.room) {
     //     const playerName = params.name;
