@@ -54,7 +54,7 @@ window.onload = () => {
 
          setTimeout(() => {
          liveBtn.click();
-        }, 2000);
+        }, 200);
     // const params = getQueryParams();
     // if (params.room) {
     //     const playerName = params.name;
